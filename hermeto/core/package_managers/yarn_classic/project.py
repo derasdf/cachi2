@@ -9,11 +9,11 @@ import json
 import logging
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any, Union
 
-from pyarn import lockfile  # type: ignore
-
 from hermeto.core.errors import PackageRejected
+from hermeto.core.package_managers.yarn_classic import lockfile  # type: ignore
 from hermeto.core.rooted_path import RootedPath
 
 log = logging.getLogger(name=__name__)
@@ -94,7 +94,7 @@ class YarnLock(_CommonConfigFile):
     def from_file(cls, path: RootedPath) -> "YarnLock":
         """Parse the content of a yarn.lock file."""
         try:
-            yarn_lockfile = lockfile.Lockfile.from_file(path)
+            yarn_lockfile = lockfile.Lockfile.from_file(Path(path))
         except FileNotFoundError:
             raise PackageRejected(
                 reason="The yarn.lock file must be present for the yarn package manager",

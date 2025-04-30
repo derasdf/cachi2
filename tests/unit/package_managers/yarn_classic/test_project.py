@@ -1,9 +1,9 @@
 import json
 
 import pytest
-from pyarn import lockfile  # type: ignore
 
 from hermeto.core.errors import PackageRejected
+from hermeto.core.package_managers.yarn_classic import lockfile  # type: ignore
 from hermeto.core.package_managers.yarn_classic.main import _verify_repository
 from hermeto.core.package_managers.yarn_classic.project import (
     ConfigFile,

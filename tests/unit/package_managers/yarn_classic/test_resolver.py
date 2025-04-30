@@ -7,10 +7,10 @@ from urllib.parse import quote
 
 import git
 import pytest
-from pyarn.lockfile import Package as PYarnPackage
 
 from hermeto.core.checksum import ChecksumInfo
 from hermeto.core.errors import PackageRejected, UnexpectedFormat
+from hermeto.core.package_managers.yarn_classic.lockfile import Package as PYarnPackage
 from hermeto.core.package_managers.yarn_classic.main import MIRROR_DIR
 from hermeto.core.package_managers.yarn_classic.project import PackageJson
 from hermeto.core.package_managers.yarn_classic.resolver import (

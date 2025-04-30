@@ -4,8 +4,7 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
-from pyarn.lockfile import Package as PYarnPackage
-
+from hermeto.core.package_managers.yarn_classic.lockfile import Package as PYarnPackage
 from hermeto.core.package_managers.yarn_classic.project import PackageJson, YarnLock
 from hermeto.core.package_managers.yarn_classic.workspaces import Workspace
 
@@ -106,7 +105,7 @@ def _find_transitive_deps(
             key = f"{name}@{version_specifier}"
             data = expanded_yarn_lock.get(key)
 
-            new_dep = PYarnPackage.from_dict(key, data)
+            new_dep = PYarnPackage.from_dict(key, data or {})
             new_dep_id = f"{new_dep.name}@{new_dep.version}"
 
             if new_dep_id not in visited:

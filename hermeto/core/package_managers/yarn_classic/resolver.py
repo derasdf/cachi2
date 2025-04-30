@@ -8,12 +8,12 @@ from typing import Any, Iterable, Optional, Union
 from urllib.parse import urlparse
 
 from packageurl import PackageURL
-from pyarn.lockfile import Package as PYarnPackage
 
 from hermeto import APP_NAME
 from hermeto.core.checksum import ChecksumInfo
 from hermeto.core.errors import PackageRejected, UnexpectedFormat
 from hermeto.core.package_managers.npm import NPM_REGISTRY_CNAMES
+from hermeto.core.package_managers.yarn_classic.lockfile import Package as PYarnPackage
 from hermeto.core.package_managers.yarn_classic.project import PackageJson, Project, YarnLock
 from hermeto.core.package_managers.yarn_classic.utils import (
     find_runtime_deps,
